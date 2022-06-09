@@ -1,3 +1,5 @@
+import apiUrl from '../apiConfig'
+import axios from 'axios'
 // index function
 export const getAllQueens = () => {
     return axios(`${apiUrl}/dragball`)

@@ -11,7 +11,7 @@ export const getAllTeamMembers = (userId) => {
 export const removeTeamMember = (user, queenId) => {
     console.log('user', user)
     return axios({
-        url: `${apiUrl}/dragball/myfaves/${queenId}`,
+        url: `${apiUrl}/dragball/myteam/${queenId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`
