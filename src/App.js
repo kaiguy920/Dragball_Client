@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexQueens from './components/queen/IndexQueens'
+import ShowQueen from './components/queen/ShowQueen'
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 				<Route path='/dragball' element={<IndexQueens />} />
+				<Route path='/dragball/:id' element={<ShowQueen user={user} />} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
