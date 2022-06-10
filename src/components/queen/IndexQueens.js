@@ -52,12 +52,24 @@ const IndexQueens = (props) => {
             <Card key={queen._id} style={{ width: '30%' }} className="m-2">
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
+                    {
+                        queen.winner ?
 
-                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url}></img></p>
+                            <>
+                                <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
+                            </>
+
+                            :
+
+                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url}></img></p>
+                    }
 
                     <Card.Text className="card-text">
-                        <p className="header-name">{queen.name}</p>
+                        <h5 className="header-name">{queen.name}</h5>
+                        <p>{queen.quote}</p>
+                        <Button variant="outline-secondary">⭐️</Button>
                         <Link to={`/dragball/${queen._id}`}>
+                            <Button variant="secondary">View Stats</Button>
                         </Link>
                     </Card.Text>
                 </Card.Body>
@@ -67,7 +79,7 @@ const IndexQueens = (props) => {
 
     return (
         <>
-            <h2>Not Your Father's Fantasy Dragball</h2>
+            <h2>Not Your Father's Fantasy Dragball League</h2>
             <div style={cardContainerLayout}>
                 {queenCards}
                 <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a>
