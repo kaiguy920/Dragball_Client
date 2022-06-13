@@ -39,7 +39,18 @@ const ShowQueen = (props) => {
             })
     })
 
-    function Lipsync(queen) {
+
+    if (!queen) {
+        return (
+            <Container fluid className="justify-content-center">
+                <Spinner animation="border" role="status" variant="warning" >
+                    <span className="visually-hidden">Loading....</span>
+                </Spinner>
+            </Container>
+        )
+    }
+
+    function Lipsync() {
         let lipsyncWin = 0
         queen?.lipsyncs?.map(lipsync => {
             // console.log("lipsync", lipsync);
@@ -50,8 +61,20 @@ const ShowQueen = (props) => {
         return <li>Wins: {lipsyncWin}</li>
     }
 
+    function BattingAvg() {
+        const howMany = queen?.lipsyncs?.length
+        let lipsyncWin = 0
+        queen?.lipsyncs?.map(lipsync => {
+            // console.log("lipsync", lipsync);
+            if (lipsync.won) {
+                lipsyncWin += 1
+            }
+        })
+        let ba = (howMany / lipsyncWin).toFixed(2)
+        return <p><b>Batting Average: {ba}</b></p>
+    }
 
-    function MiniWin(queen) {
+    function MiniWin() {
         let miniWin = 0
         queen?.challenges?.map(challenge => {
             // console.log("challenge", challenge);
@@ -62,7 +85,7 @@ const ShowQueen = (props) => {
         return <li>Mini's: {miniWin}</li>
     }
 
-    function MaxiWin(queen) {
+    function MaxiWin() {
         let maxiWin = 0
         queen?.challenges?.map(challenge => {
             if (challenge.type = "maxi" && challenge.won) {
@@ -70,30 +93,6 @@ const ShowQueen = (props) => {
             }
         })
         return <li>Maxi's: {maxiWin}</li>
-    }
-
-
-    function BattingAvg(queen) {
-        const howMany = queen?.lipsyncs?.length
-        let lipsyncWin = 0
-        const ba = howMany / lipsyncWin
-        queen?.lipsyncs?.map(lipsync => {
-            // console.log("lipsync", lipsync);
-            if (lipsync.won) {
-                lipsyncWin += 1
-            }
-        })
-        return <p><b>Batting Average: {ba}</b></p>
-    }
-
-    if (!queen) {
-        return (
-            <Container fluid className="justify-content-center">
-                <Spinner animation="border" role="status" variant="warning" >
-                    <span className="visually-hidden">Loading....</span>
-                </Spinner>
-            </Container>
-        )
     }
 
     let queenCard
@@ -125,19 +124,14 @@ const ShowQueen = (props) => {
 
 
                             <h4><b>Lip Sync Stats:</b></h4>
-                            {/* <HowMany /> */}
                             <li>How Many: {queen?.lipsyncs?.length}</li>
-                            {/* <li>Wins: {lipsyncWin}</li> */}
-                            <li>Wins: { }</li>
                             <Lipsync />
                             <BattingAvg />
-                            {/* <p><b>Batting Average: {howMany}</b></p> */}
 
                             <h4><b>Challenge Wins</b></h4>
                             <MiniWin />
                             <MaxiWin />
-                            {/* <li>Mini's: {miniWin}</li> */}
-                            {/* <li>Maxi's: {maxiWin}</li> */}
+
 
                         </Card.Text>
                     </Card.Body>
