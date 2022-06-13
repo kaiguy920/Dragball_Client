@@ -17,7 +17,7 @@ const ShowQueen = (props) => {
     const { id } = useParams()
     const navigate = useNavigate()
 
-    console.log('id in showQueen', id)
+    // console.log('id in showQueen', id)
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
@@ -73,11 +73,6 @@ const ShowQueen = (props) => {
     }
 
 
-    function HowMany(queen) {
-        const howMany = queen?.lipsyncs?.length
-        return <p><b>Batting Average: {howMany}</b></p>
-    }
-
     function BattingAvg(queen) {
         const howMany = queen?.lipsyncs?.length
         let lipsyncWin = 0
@@ -104,12 +99,12 @@ const ShowQueen = (props) => {
     let queenCard
 
     if (queen) {
-        queenCard = //queen.map(queen => (
+        queenCard =
             <Container className="fluid mt-5">
                 <Card>
                     <Card.Header className='card-title'><h2>{queen.name}</h2></Card.Header>
                     <Card.Body className="d-flex justify-content-start">
-                        <img className="show-image" src={queen.image}></img>
+                        <img className="show-image" src={queen.image_url} style={{ width: '40%', height: '5%' }}></img>
                         <Card.Text className="show-description">
                             <h5>Season: {queen.episodes[0].seasonId}</h5>
 
@@ -130,9 +125,10 @@ const ShowQueen = (props) => {
 
 
                             <h4><b>Lip Sync Stats:</b></h4>
-                            <HowMany />
-                            {/* <li>How Many: {howMany}</li> */}
+                            {/* <HowMany /> */}
+                            <li>How Many: {queen?.lipsyncs?.length}</li>
                             {/* <li>Wins: {lipsyncWin}</li> */}
+                            <li>Wins: { }</li>
                             <Lipsync />
                             <BattingAvg />
                             {/* <p><b>Batting Average: {howMany}</b></p> */}
@@ -177,7 +173,6 @@ const ShowQueen = (props) => {
             <h2>Not Your Father's Fantasy Dragball League</h2>
             <div style={cardContainerLayout}>
                 {queenCard}
-                <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a>
             </div>
         </>
     )

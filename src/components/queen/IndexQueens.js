@@ -68,7 +68,7 @@ const IndexQueens = (props) => {
                         <h5 className="header-name">{queen.name}</h5>
                         <p>{queen.quote}</p>
                         <Button variant="outline-secondary">⭐️</Button>
-                        <Link to={`/dragball/${queen._id}`}>
+                        <Link to={`/dragball/${queen.id}`}>
                             <Button variant="secondary">View Stats</Button>
                         </Link>
                     </Card.Text>
