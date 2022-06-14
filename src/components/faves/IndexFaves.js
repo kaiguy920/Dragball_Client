@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllFaves } from '../../api/fave'
+import { getAllFaves, removeQueen } from '../../api/fave'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -12,9 +12,9 @@ const cardContainerLayout = {
 
 const IndexFaves = (props) => {
 
-    const [queens, setQueens] = useState(null)
     const [faves, setFaves] = useState(null)
     const { msgAlert, user } = props
+    const [updated, setUpdated] = useState(false)
     const { id } = useParams()
     const navigate = useNavigate()
 
@@ -22,7 +22,6 @@ const IndexFaves = (props) => {
         getAllFaves(id)
             .then(res => {
                 setFaves(res.data.queens)
-                console.log("res.data", res.data);
             })
             .then(() => {
                 // msgAlert({
@@ -38,8 +37,16 @@ const IndexFaves = (props) => {
                 //     variant: 'danger',
                 // })
             })
-    }, [])
+    }, [updated])
 
+    const removeTheQueen = (queen) => {
+        // console.log("removeTheQueen id", queen._id)
+
+        removeQueen(user, queen._id)
+            .then(() => setUpdated(true))
+            .catch(() => {
+            })
+    }
 
     if (!faves) {
         return <p>Loading ...</p>
@@ -62,6 +69,7 @@ const IndexFaves = (props) => {
                         <h5 className="header-name">{queen.name}</h5>
 
                         <Button variant="outline-secondary">She's Team Material</Button>
+                        <Button onClick={() => removeTheQueen(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
                 </Card.Body>
             </Card>
@@ -73,7 +81,7 @@ const IndexFaves = (props) => {
             <h2>My Faves</h2>
             <div style={cardContainerLayout}>
                 {queenCards}
-                <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a>
+                {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
             </div>
         </>
     )
