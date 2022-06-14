@@ -48,7 +48,7 @@ const App = () => {
 			<Header user={user} />
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-				<Route path='/dragball' element={<IndexQueens />} />
+				<Route path='/dragball' element={<IndexQueens user={user} />} />
 				<Route path='/dragball/:id' element={<ShowQueen user={user} />} />
 				<Route path='/dragball/myfaves/:id' element={<IndexFaves user={user} />} />
 				<Route

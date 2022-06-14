@@ -21,6 +21,8 @@ const IndexQueens = (props) => {
     const { id } = useParams()
     const navigate = useNavigate()
 
+    console.log("USERRRRR HELLO", user)
+
     useEffect(() => {
         getAllQueens()
             .then(res => {
@@ -45,7 +47,7 @@ const IndexQueens = (props) => {
 
     const handleFavSubmit = (queenId, newQueenFav) => {
 
-        createQueenFav(user, { queen: newQueenFav }, queenId)
+        createQueenFav(user, queenId, { queen: newQueenFav })
             .then(res => {
                 setFave(res.data)
                 // console.log("res.data", res.data);
@@ -84,7 +86,23 @@ const IndexQueens = (props) => {
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen.name}</h5>
                         <p>{queen.quote}</p>
-                        <Button onClick={() => handleFavSubmit()} variant="outline-secondary">⭐️</Button>
+
+                        {
+                            user
+                                ?
+                                <>
+                                    <Button onClick={() => handleFavSubmit()} variant="outline-secondary">⭐️</Button>
+                                </>
+
+                                :
+
+                                <>
+                                    <Link to={`/sign-in`}>
+                                        <Button variant="outline-secondary">⭐️</Button>
+                                    </Link>
+                                </>
+                        }
+
                         <Link to={`/dragball/${queen.id}`}>
                             <Button variant="secondary">View Stats</Button>
                         </Link>
