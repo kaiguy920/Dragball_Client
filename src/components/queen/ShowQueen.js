@@ -70,7 +70,7 @@ const ShowQueen = (props) => {
                 lipsyncWin += 1
             }
         })
-        let ba = (howMany / lipsyncWin).toFixed(2)
+        let ba = (lipsyncWin / howMany).toFixed(2)
         return <p><b>Batting Average: {ba}</b></p>
     }
 
