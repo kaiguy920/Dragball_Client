@@ -16,7 +16,7 @@ const cardContainerLayout = {
 const IndexQueens = (props) => {
 
     const [queens, setQueens] = useState(null)
-    const [queen, setQueen] = useState(null)
+    // const [queen, setQueen] = useState(null)
     const [fave, setFave] = useState(null)
     const { msgAlert, user } = props
     const { id } = useParams()
@@ -45,12 +45,14 @@ const IndexQueens = (props) => {
             })
     }, [])
 
-    const handleFavSubmit = () => {
+    const handleFavSubmit = (queen) => {
+        // console.log('queen_id', queen_id)
 
-        createQueenFav(user, queen, fave)
+        // console.log("fave", fave)
+        createQueenFav(user, queen.id, queen)
             .then(res => {
                 setFave(res.data)
-                // console.log("res.data", res.data);
+                console.log("res.data", res.data);
             })
             .then(() => { navigate(`/dragball/myfaves/${user._id}`) })
             .catch(() => {
@@ -68,7 +70,7 @@ const IndexQueens = (props) => {
 
     if (queens.length > 0) {
         queenCards = queens.map(queen => (
-            <Card key={queen._id} style={{ width: '30%' }} className="m-2">
+            <Card key={queen.id} style={{ width: '30%' }} className="m-2">
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
                     {
@@ -91,7 +93,7 @@ const IndexQueens = (props) => {
                             user
                                 ?
                                 <>
-                                    <Button onClick={() => handleFavSubmit()} variant="outline-secondary">⭐️</Button>
+                                    <Button onClick={() => handleFavSubmit(queen)} variant="outline-secondary">⭐️</Button>
                                 </>
 
                                 :

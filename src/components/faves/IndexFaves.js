@@ -13,16 +13,16 @@ const cardContainerLayout = {
 const IndexFaves = (props) => {
 
     const [queens, setQueens] = useState(null)
-    const [faves, setFave] = useState(null)
+    const [faves, setFaves] = useState(null)
     const { msgAlert, user } = props
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        getAllFaves()
+        getAllFaves(id)
             .then(res => {
-                setFave(res.data)
-                // console.log("res.data", res.data);
+                setFaves(res.data.queens)
+                console.log("res.data", res.data);
             })
             .then(() => {
                 // msgAlert({
@@ -51,28 +51,17 @@ const IndexFaves = (props) => {
 
     if (faves.length > 0) {
         queenCards = faves.map(queen => (
-            <Card key={queen._id} style={{ width: '30%' }} className="m-2">
+            <Card key={queen.id} style={{ width: '30%' }} className="m-2">
+                {console.log("queen", queen)}
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
-                    {
-                        queen.winner ?
 
-                            <>
-                                <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
-                            </>
-
-                            :
-
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url}></img></p>
-                    }
+                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.image}></img></p>
 
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen.name}</h5>
-                        <p>{queen.quote}</p>
+
                         <Button variant="outline-secondary">She's Team Material</Button>
-                        <Link to={`/dragball/${queen.id}`}>
-                            <Button variant="secondary">View Stats</Button>
-                        </Link>
                     </Card.Text>
                 </Card.Body>
             </Card>
