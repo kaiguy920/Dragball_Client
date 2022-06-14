@@ -142,15 +142,14 @@ const ShowQueen = (props) => {
                             user
                                 ?
                                 <>
-                                    <Button className='btn btn-dark'>⭐️</Button>
-
+                                    <Button onClick={() => createQueenFav()} className='btn btn-secondary'>⭐️</Button>
                                 </>
 
                                 :
 
                                 <>
                                     <Link to={`/sign-in`}>
-                                        <Button className='show-buttons btn btn-dark'>⭐️</Button>
+                                        <Button className='show-buttons btn btn-secondary'>⭐️</Button>
                                     </Link>
                                 </>
                         }

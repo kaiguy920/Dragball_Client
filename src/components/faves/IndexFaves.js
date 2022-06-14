@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { getAllQueens, createQueenFav } from '../../api/queen'
+import { getAllFaves } from '../../api/fave'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
-// I'm going to declare a style object
-// this will be used to corral my cards
-// we can use basic CSS, but we have to use JS syntax
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
     flexFlow: 'row wrap'
 }
 
-const IndexQueens = (props) => {
+const IndexFaves = (props) => {
 
     const [queens, setQueens] = useState(null)
-    const [fave, setFave] = useState(null)
+    const [faves, setFave] = useState(null)
     const { msgAlert, user } = props
     const { id } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        getAllQueens()
+        getAllFaves()
             .then(res => {
-                setQueens(res.data)
+                setFave(res.data)
                 // console.log("res.data", res.data);
             })
             .then(() => {
@@ -43,29 +40,17 @@ const IndexQueens = (props) => {
             })
     }, [])
 
-    const handleFavSubmit = (queenId, newQueenFav) => {
 
-        createQueenFav(user, { queen: newQueenFav }, queenId)
-            .then(res => {
-                setFave(res.data)
-                // console.log("res.data", res.data);
-            })
-            .then(() => { navigate(`/dragball/myfaves/${user._id}`) })
-            .catch(() => {
-
-            })
-    }
-
-    if (!queens) {
+    if (!faves) {
         return <p>Loading ...</p>
-    } else if (queens.length === 0) {
+    } else if (faves.length === 0) {
         return <p>Where my girls at; where they at?</p>
     }
 
     let queenCards
 
-    if (queens.length > 0) {
-        queenCards = queens.map(queen => (
+    if (faves.length > 0) {
+        queenCards = faves.map(queen => (
             <Card key={queen._id} style={{ width: '30%' }} className="m-2">
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
@@ -84,7 +69,7 @@ const IndexQueens = (props) => {
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen.name}</h5>
                         <p>{queen.quote}</p>
-                        <Button onClick={() => handleFavSubmit()} variant="outline-secondary">⭐️</Button>
+                        <Button variant="outline-secondary">She's Team Material</Button>
                         <Link to={`/dragball/${queen.id}`}>
                             <Button variant="secondary">View Stats</Button>
                         </Link>
@@ -96,7 +81,7 @@ const IndexQueens = (props) => {
 
     return (
         <>
-            <h2>Not Your Father's Fantasy Dragball League</h2>
+            <h2>My Faves</h2>
             <div style={cardContainerLayout}>
                 {queenCards}
                 <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a>
@@ -105,4 +90,4 @@ const IndexQueens = (props) => {
     )
 }
 
-export default IndexQueens
+export default IndexFaves

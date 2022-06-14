@@ -13,8 +13,9 @@ export const getOneQueen = (queenId) => {
 
 
 // POST -> create function to push into favorites list
-export const createQueenFav = (user, newQueenFav, queenId) => {
+export const createQueenFav = (user, queenId, newQueenFav) => {
     console.log('user', user)
+    console.log("queenID", queenId)
     console.log('this is queen added to fave', newQueenFav)
     return axios({
         url: `${apiUrl}/dragball/addfave/${queenId}`,
