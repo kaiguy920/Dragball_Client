@@ -6,7 +6,7 @@ const linkStyle = {
 	color: 'white',
 	textDecoration: 'none'
 }
-const authenticatedOptions = (
+const authenticatedOptions = (user) => (
 	<>
 		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
@@ -16,6 +16,16 @@ const authenticatedOptions = (
 		<Nav.Item>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to={`/dragball/myfaves/${user._id}`} style={linkStyle}>
+				My Faves
+			</Link>
+		</Nav.Item>
+		<Nav.Item>
+			<Link to={`/dragball/myteam/${user._id}`} style={linkStyle}>
+				My Team
 			</Link>
 		</Nav.Item>
 	</>
@@ -56,7 +66,7 @@ const Header = ({ user }) => (
 					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 				)}
 				{alwaysOptions}
-				{user ? authenticatedOptions : unauthenticatedOptions}
+				{user ? authenticatedOptions(user) : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>

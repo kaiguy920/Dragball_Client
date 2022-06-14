@@ -16,12 +16,12 @@ const cardContainerLayout = {
 const IndexQueens = (props) => {
 
     const [queens, setQueens] = useState(null)
+    const [queen, setQueen] = useState(null)
     const [fave, setFave] = useState(null)
     const { msgAlert, user } = props
     const { id } = useParams()
     const navigate = useNavigate()
 
-    console.log("USERRRRR HELLO", user)
 
     useEffect(() => {
         getAllQueens()
@@ -45,9 +45,9 @@ const IndexQueens = (props) => {
             })
     }, [])
 
-    const handleFavSubmit = (queenId, newQueenFav) => {
+    const handleFavSubmit = () => {
 
-        createQueenFav(user, queenId, { queen: newQueenFav })
+        createQueenFav(user, queen, fave)
             .then(res => {
                 setFave(res.data)
                 // console.log("res.data", res.data);
