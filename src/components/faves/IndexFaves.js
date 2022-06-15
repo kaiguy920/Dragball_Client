@@ -21,7 +21,7 @@ const IndexFaves = (props) => {
     useEffect(() => {
         getAllFaves(id)
             .then(res => {
-                setFaves(res.data.queens)
+                setFaves(res?.data?.queens)
             })
             .then(() => {
                 // msgAlert({
@@ -42,7 +42,7 @@ const IndexFaves = (props) => {
     const removeTheQueen = (queen) => {
         // console.log("removeTheQueen id", queen._id)
 
-        removeQueen(user, queen._id)
+        removeQueen(user, queen?._id)
             .then(() => setUpdated(true))
             .catch(() => {
             })
@@ -66,7 +66,7 @@ const IndexFaves = (props) => {
                     <p><img style={{ width: '80%', height: '100%' }} src={queen?.image}></img></p>
 
                     <Card.Text className="card-text">
-                        <h5 className="header-name">{queen.name}</h5>
+                        <h5 className="header-name">{queen?.name}</h5>
 
                         <Button variant="outline-secondary">She's Team Material</Button>
                         <Button onClick={() => removeTheQueen(queen)} variant="outline-danger">Sashay Away</Button>
@@ -79,9 +79,11 @@ const IndexFaves = (props) => {
     return (
         <>
             <h2>My Faves</h2>
-            <div style={cardContainerLayout}>
+            <div style={cardContainerLayout}
+                triggerRefresh={() => setUpdated(prev => !prev)}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
+
             </div>
         </>
     )

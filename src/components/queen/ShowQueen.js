@@ -13,6 +13,7 @@ const cardContainerLayout = {
 const ShowQueen = (props) => {
 
     const [queen, setQueen] = useState(null)
+    const [fave, setFave] = useState(null)
     const { user, msgAlert } = props
     const { id } = useParams()
     const navigate = useNavigate()
@@ -38,6 +39,20 @@ const ShowQueen = (props) => {
                 // })
             })
     })
+
+
+    const handleFavSubmit = (queen) => {
+
+        createQueenFav(user, queen.id, queen)
+            .then(res => {
+                setFave(res.data)
+                console.log("res.data", res.data);
+            })
+            .then(() => { navigate(`/dragball/myfaves/${user._id}`) })
+            .catch(() => {
+
+            })
+    }
 
 
     if (!queen) {
@@ -142,7 +157,7 @@ const ShowQueen = (props) => {
                             user
                                 ?
                                 <>
-                                    <Button onClick={() => createQueenFav()} className='btn btn-secondary'>⭐️</Button>
+                                    <Button onClick={() => handleFavSubmit(queen)} className='btn btn-secondary'>⭐️</Button>
                                 </>
 
                                 :
