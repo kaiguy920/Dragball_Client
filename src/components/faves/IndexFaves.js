@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllFaves, removeQueen } from '../../api/fave'
+import { getAllFaves, removeQueen, createTeamMember } from '../../api/fave'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ const cardContainerLayout = {
 const IndexFaves = (props) => {
 
     const [faves, setFaves] = useState(null)
+    const [team, setTeam] = useState(null)
     const { msgAlert, user } = props
     const [updated, setUpdated] = useState(false)
     const { id } = useParams()
@@ -43,8 +44,22 @@ const IndexFaves = (props) => {
         // console.log("removeTheQueen id", queen._id)
 
         removeQueen(user, queen?._id)
+            // .then(() => { navigate(`/dragball/myfaves/${user._id}`) })
             .then(() => setUpdated(true))
             .catch(() => {
+            })
+    }
+
+    const handleTeamSubmit = (queen) => {
+
+        createTeamMember(user, queen.id, queen)
+            .then(res => {
+                setTeam(res.data)
+                console.log("res.data", res.data);
+            })
+            .then(() => { navigate(`/dragball/myteam/${user._id}`) })
+            .catch(() => {
+
             })
     }
 
@@ -68,7 +83,7 @@ const IndexFaves = (props) => {
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen?.name}</h5>
 
-                        <Button variant="outline-secondary">She's Team Material</Button>
+                        <Button onClick={() => handleTeamSubmit(queen)} variant="outline-secondary">She's Team Material</Button>
                         <Button onClick={() => removeTheQueen(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
                 </Card.Body>

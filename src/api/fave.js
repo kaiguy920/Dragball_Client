@@ -8,7 +8,7 @@ export const getAllFaves = (userId) => {
 
 // ADD to team
 // POST
-export const createTeamMember = (user, newTeamMember, queenId) => {
+export const createTeamMember = (user, queenId, newTeamMember) => {
     console.log('user', user)
     console.log('this is queen added to team', newTeamMember)
     return axios({
