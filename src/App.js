@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexQueens from './components/queen/IndexQueens'
 import ShowQueen from './components/queen/ShowQueen'
 import IndexFaves from './components/faves/IndexFaves'
+import IndexTeam from './components/team/IndexTeam'
 
 const App = () => {
 
@@ -51,6 +52,7 @@ const App = () => {
 				<Route path='/dragball' element={<IndexQueens user={user} />} />
 				<Route path='/dragball/:id' element={<ShowQueen user={user} />} />
 				<Route path='/dragball/myfaves/:id' element={<IndexFaves user={user} />} />
+				<Route path='/dragball/myteam/:id' element={<IndexTeam user={user} />} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}

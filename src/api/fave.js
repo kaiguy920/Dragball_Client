@@ -12,7 +12,7 @@ export const createTeamMember = (user, queenId, newTeamMember) => {
     console.log('user', user)
     console.log('this is queen added to team', newTeamMember)
     return axios({
-        url: `${apiUrl}/dragball/myteam/${queenId}`,
+        url: `${apiUrl}/dragball/addteam/${queenId}`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`

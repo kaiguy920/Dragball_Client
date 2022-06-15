@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getAllFaves, removeQueen, createTeamMember } from '../../api/fave'
+import { getAllTeamMembers, removeTeamMember } from '../../api/team'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -10,9 +10,7 @@ const cardContainerLayout = {
     flexFlow: 'row wrap'
 }
 
-const IndexFaves = (props) => {
-
-    const [faves, setFaves] = useState(null)
+const IndexTeam = (props) => {
     const [team, setTeam] = useState(null)
     const { msgAlert, user } = props
     const [updated, setUpdated] = useState(false)
@@ -20,9 +18,10 @@ const IndexFaves = (props) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        getAllFaves(id)
+        getAllTeamMembers(id)
             .then(res => {
-                setFaves(res?.data?.queens)
+                console.log("team index res.data", res.data);
+                setTeam(res?.data)
             })
             .then(() => {
                 // msgAlert({
@@ -40,39 +39,26 @@ const IndexFaves = (props) => {
             })
     }, [updated])
 
-    const removeTheQueen = (queen) => {
+    const removeTheTeamMember = (queen) => {
         // console.log("removeTheQueen id", queen._id)
 
-        removeQueen(user, queen?._id)
+        removeTeamMember(user, queen?._id)
             // .then(() => { navigate(`/dragball/myfaves/${user._id}`) })
             .then(() => setUpdated())
             .catch(() => {
             })
     }
 
-    const handleTeamSubmit = (queen) => {
-
-        createTeamMember(user, queen._id, queen)
-            .then(res => {
-                setTeam(res.data.team)
-                console.log("res.data", res.data);
-            })
-            .then(() => { navigate(`/dragball/myteam/${user._id}`) })
-            .catch(() => {
-
-            })
-    }
-
-    if (!faves) {
+    if (!team) {
         return <p>Loading ...</p>
-    } else if (faves.length === 0) {
+    } else if (team.length === 0) {
         return <p>Where my girls at; where they at?</p>
     }
 
     let queenCards
 
-    if (faves.length > 0) {
-        queenCards = faves.map(queen => (
+    if (team.length > 0) {
+        queenCards = team.map(queen => (
             <Card key={queen.id} style={{ width: '30%' }} className="m-2">
                 {console.log("queen", queen)}
 
@@ -83,8 +69,7 @@ const IndexFaves = (props) => {
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen?.name}</h5>
 
-                        <Button onClick={() => handleTeamSubmit(queen)} variant="outline-secondary">She's Team Material</Button>
-                        <Button onClick={() => removeTheQueen(queen)} variant="outline-danger">Sashay Away</Button>
+                        <Button onClick={() => removeTheTeamMember(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
                 </Card.Body>
             </Card>
@@ -93,8 +78,9 @@ const IndexFaves = (props) => {
 
     return (
         <>
-            <h2>My Faves</h2>
-            <div style={cardContainerLayout}>
+            <h2>My Team</h2>
+            <div style={cardContainerLayout}
+                triggerRefresh={() => setUpdated(prev => !prev)}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
 
@@ -103,4 +89,4 @@ const IndexFaves = (props) => {
     )
 }
 
-export default IndexFaves
+export default IndexTeam
