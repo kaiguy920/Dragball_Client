@@ -64,10 +64,10 @@ const IndexTeam = (props) => {
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
 
-                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.teamMembers?.image}></img></p>
+                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.teamMembers?.[0].image}></img></p>
 
                     <Card.Text className="card-text">
-                        <h5 className="header-name">{queen?.teamMembers?.name}</h5>
+                        <h5 className="header-name">{queen?.teamMembers?.[0].name}</h5>
 
                         <Button onClick={() => removeTheTeamMember(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
