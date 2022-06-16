@@ -11,7 +11,7 @@ const cardContainerLayout = {
 }
 
 const IndexTeam = (props) => {
-    const [team, setTeam] = useState(null)
+    const [teamMembers, setTeamMembers] = useState(null)
     const { msgAlert, user } = props
     const [updated, setUpdated] = useState(false)
     const { id } = useParams()
@@ -20,8 +20,8 @@ const IndexTeam = (props) => {
     useEffect(() => {
         getAllTeamMembers(id)
             .then(res => {
-                console.log("team index res.data", res.data);
-                setTeam(res?.data)
+                console.log("team index res.data", res.data.team);
+                setTeamMembers(res?.data?.team)
             })
             .then(() => {
                 // msgAlert({
@@ -49,25 +49,25 @@ const IndexTeam = (props) => {
             })
     }
 
-    if (!team) {
+    if (!teamMembers) {
         return <p>Loading ...</p>
-    } else if (team.length === 0) {
+    } else if (teamMembers.length === 0) {
         return <p>Where my girls at; where they at?</p>
     }
 
     let queenCards
 
-    if (team.length > 0) {
-        queenCards = team.map(queen => (
-            <Card key={queen.id} style={{ width: '30%' }} className="m-2">
-                {console.log("queen", queen)}
+    if (teamMembers.length > 0) {
+        queenCards = teamMembers.map(queen => (
+            <Card key={queen._id} style={{ width: '30%' }} className="m-2">
+                {console.log("queen teamMembers", queen.teamMembers)}
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
 
-                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.image}></img></p>
+                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.teamMembers?.image}></img></p>
 
                     <Card.Text className="card-text">
-                        <h5 className="header-name">{queen?.name}</h5>
+                        <h5 className="header-name">{queen?.teamMembers?.name}</h5>
 
                         <Button onClick={() => removeTheTeamMember(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
@@ -79,8 +79,7 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-            <div style={cardContainerLayout}
-                triggerRefresh={() => setUpdated(prev => !prev)}>
+            <div style={cardContainerLayout}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
 

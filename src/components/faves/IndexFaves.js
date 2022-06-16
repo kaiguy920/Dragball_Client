@@ -52,10 +52,10 @@ const IndexFaves = (props) => {
 
     const handleTeamSubmit = (queen) => {
 
-        createTeamMember(user, queen._id, queen)
+        createTeamMember(user, queen._id, team)
             .then(res => {
-                setTeam(res.data.team)
-                console.log("res.data", res.data);
+                setTeam(res.data)
+                console.log("set team in index fave", res.data);
             })
             .then(() => { navigate(`/dragball/myteam/${user._id}`) })
             .catch(() => {
