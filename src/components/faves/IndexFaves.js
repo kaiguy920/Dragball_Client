@@ -74,7 +74,7 @@ const IndexFaves = (props) => {
     if (faves.length > 0) {
         queenCards = faves.map(queen => (
             <Card key={queen.id} style={{ width: '30%' }} className="m-2">
-                {console.log("queen", queen)}
+                {console.log("queen faves", queen)}
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
 

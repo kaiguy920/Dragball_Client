@@ -56,18 +56,20 @@ const IndexTeam = (props) => {
     }
 
     let queenCards
+    const team = teamMembers[0].teamMembers
+    console.log("const team", team);
 
     if (teamMembers.length > 0) {
-        queenCards = teamMembers.map(queen => (
+        queenCards = team.map(queen => (
             <Card key={queen._id} style={{ width: '30%' }} className="m-2">
-                {console.log("queen teamMembers", queen.teamMembers)}
+                {console.log("queen team", queen)}
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
 
-                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.teamMembers?.[0].image}></img></p>
+                    <p><img style={{ width: '80%', height: '100%' }} src={queen?.image}></img></p>
 
                     <Card.Text className="card-text">
-                        <h5 className="header-name">{queen?.teamMembers?.[0].name}</h5>
+                        <h5 className="header-name">{queen?.name}</h5>
 
                         <Button onClick={() => removeTheTeamMember(queen)} variant="outline-danger">Sashay Away</Button>
                     </Card.Text>
