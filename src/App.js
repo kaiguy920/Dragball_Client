@@ -55,7 +55,7 @@ const App = () => {
 				<Route path='/dragball' element={<IndexQueens user={user} />} />
 				<Route path='/dragball/winners' element={<IndexWinners user={user} />} />
 				<Route path='/dragball/congeniality' element={<IndexCongenialityQueens user={user} />} />
-				<Route path='/dragball/season/:id' element={<IndexSeason user={user} />} />
+				<Route path='/dragball/season/:season' element={<IndexSeason user={user} />} />
 				<Route path='/dragball/:id' element={<ShowQueen user={user} />} />
 				<Route path='/dragball/myfaves/:id' element={<IndexFaves user={user} />} />
 				<Route path='/dragball/myteam/:id' element={<IndexTeam user={user} />} />

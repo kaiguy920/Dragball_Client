@@ -74,17 +74,9 @@ const IndexWinners = (props) => {
             <Card key={queen.id} style={{ width: '30%' }} className="m-2">
 
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
-                    {
-                        queen.winner ?
 
-                            <>
-                                <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
-                            </>
+                    <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
 
-                            :
-
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url}></img></p>
-                    }
 
                     <Card.Text className="card-text">
                         <h5 className="header-name">{queen.name}</h5>
