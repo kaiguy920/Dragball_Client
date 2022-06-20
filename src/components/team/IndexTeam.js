@@ -57,7 +57,7 @@ const IndexTeam = (props) => {
 
     let queenCards
     const team = teamMembers[0].teamMembers
-    console.log("const team", team);
+    // console.log("const team", team);
 
     if (teamMembers.length > 0) {
         queenCards = team.map(queen => (
