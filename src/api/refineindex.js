@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // index by season 
-export const getQueensBySeason = () => {
+export const getQueensBySeason = (season) => {
     return axios(`${apiUrl}/dragball/season/${season}`)
 }
 

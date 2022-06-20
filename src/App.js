@@ -16,6 +16,9 @@ import IndexQueens from './components/queen/IndexQueens'
 import ShowQueen from './components/queen/ShowQueen'
 import IndexFaves from './components/faves/IndexFaves'
 import IndexTeam from './components/team/IndexTeam'
+import IndexSeason from './components/queen/IndexSeason'
+import IndexWinners from './components/queen/IndexWinners'
+import IndexCongenialityQueens from './components/queen/IndexCongeniality'
 
 const App = () => {
 
@@ -50,6 +53,9 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 				<Route path='/dragball' element={<IndexQueens user={user} />} />
+				<Route path='/dragball/winners' element={<IndexWinners user={user} />} />
+				<Route path='/dragball/congeniality' element={<IndexCongenialityQueens user={user} />} />
+				<Route path='/dragball/season/:id' element={<IndexSeason user={user} />} />
 				<Route path='/dragball/:id' element={<ShowQueen user={user} />} />
 				<Route path='/dragball/myfaves/:id' element={<IndexFaves user={user} />} />
 				<Route path='/dragball/myteam/:id' element={<IndexTeam user={user} />} />
