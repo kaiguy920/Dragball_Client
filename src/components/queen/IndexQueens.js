@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { getAllQueens, createQueenFav } from '../../api/queen'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+// import { DropdownButton, Dropdown } from 'react-bootstrap/DropdownButton'
 
 
 // I'm going to declare a style object
@@ -117,6 +118,30 @@ const IndexQueens = (props) => {
     return (
         <>
             <h2>Not Your Father's Fantasy Dragball League</h2>
+            <div className="football">
+                <a href="https://imgur.com/kNDZo96"><img src="https://i.imgur.com/kNDZo96.jpg" style={{ width: '50%', height: '50%' }} /></a>
+            </div>
+            <>
+                {['Secondary'].map(
+                    (variant) => (
+                        <DropdownButton
+                            as={ButtonGroup}
+                            key={variant}
+                            id={`dropdown-variants-${variant}`}
+                            variant={variant.toLowerCase()}
+                            title={variant}
+                        >
+                            <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                            <Dropdown.Item eventKey="3" active>
+                                Active Item
+                            </Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                        </DropdownButton>
+                    ),
+                )}
+            </>
             <div style={cardContainerLayout}>
                 {queenCards}
                 <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a>
