@@ -122,22 +122,45 @@ const IndexQueens = (props) => {
                 <a href="https://imgur.com/kNDZo96"><img src="https://i.imgur.com/kNDZo96.jpg" style={{ width: '50%', height: '50%' }} /></a>
             </div>
             <>
-                {['Secondary'].map(
+                {['Index by'].map(
                     (variant) => (
                         <DropdownButton
                             as={ButtonGroup}
                             key={variant}
                             id={`dropdown-variants-${variant}`}
-                            variant={variant.toLowerCase()}
+                            variant='secondary'
                             title={variant}
                         >
-                            <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-                            <Dropdown.Item eventKey="3" active>
-                                Active Item
-                            </Dropdown.Item>
+                            <Dropdown.Item href="/dragball/sesason/1">Season 1</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/2">Season 2</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/3">Season 3</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/4">Season 4</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/5">Season 5</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/6">Season 6</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/7">Season 7</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/8">Season 8</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/9">Season 9</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/10">Season 10</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/11">Season 11</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/12">Season 12</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/sesason/13">Season 13</Dropdown.Item>
+
                             <Dropdown.Divider />
-                            <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/winners">Winners</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="/dragball/congeniality">Miss Congenealities</Dropdown.Item>
                         </DropdownButton>
                     ),
                 )}
