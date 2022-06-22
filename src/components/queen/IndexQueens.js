@@ -131,36 +131,48 @@ const IndexQueens = (props) => {
                             variant='secondary'
                             title={variant}
                         >
-                            <Dropdown.Item href="/dragball/sesason/1">Season 1</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/season/1">Season 1</Dropdown.Item>
 
-                            <Dropdown.Item href="/dragball/sesason/2">Season 2</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/season/2">Season 2</Dropdown.Item>
 
-                            <Dropdown.Item href="/dragball/sesason/3">Season 3</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/season/3">Season 3</Dropdown.Item>
 
-                            <Dropdown.Item href="/dragball/sesason/4">Season 4</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/5">Season 5</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/6">Season 6</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/7">Season 7</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/8">Season 8</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/9">Season 9</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/10">Season 10</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/11">Season 11</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/12">Season 12</Dropdown.Item>
-
-                            <Dropdown.Item href="/dragball/sesason/13">Season 13</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/season/4">Season 4</Dropdown.Item>
 
                             <Dropdown.Divider />
-                            <Dropdown.Item href="/dragball/winners">Winners</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/season/5">⭐️ All Stars 1 ⭐️</Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item href="/dragball/congeniality">Miss Congenealities</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/6">Season 5</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/7">Season 6</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/8">Season 7</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/9">Season 8</Dropdown.Item>
+
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="/dragball/season/10">⭐️ All Stars 2 ⭐️</Dropdown.Item>
+                            <Dropdown.Divider />
+
+                            <Dropdown.Item href="/dragball/season/11">Season 9</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/12">⭐️ All Stars 3 ⭐️</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/13">Season 10</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/14">⭐️ All Stars 4 ⭐️</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/15">Season 11</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/16">Season 12</Dropdown.Item>
+
+                            <Dropdown.Item href="/dragball/season/17">⭐️ All Stars 5 ⭐️</Dropdown.Item>
+
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="/dragball/winners">🏆 Winners 🏆</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item href="/dragball/congeniality">🎀 Miss Congenealities 🎀</Dropdown.Item>
                         </DropdownButton>
                     ),
                 )}

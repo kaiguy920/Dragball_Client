@@ -72,10 +72,11 @@ const IndexSeasonQueens = (props) => {
     if (queens.length > 0) {
         queenCards = queens.map(queen => (
             <Card key={queen.id} style={{ width: '30%' }} className="m-2">
-
+                {console.log("queens here?", queen.seasons[0].place)}
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
+
                     {
-                        queen.winner ?
+                        queen.winner || queen.seasons[0].place === '1' ?
 
                             <>
                                 <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
