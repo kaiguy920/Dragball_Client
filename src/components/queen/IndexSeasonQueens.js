@@ -84,7 +84,7 @@ const IndexSeasonQueens = (props) => {
 
                             :
 
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url}></img></p>
+                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/gxiNbLG.jpg" }}></img></p>
                     }
 
                     <Card.Text className="card-text">
