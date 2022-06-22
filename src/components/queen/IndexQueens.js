@@ -158,17 +158,23 @@ const IndexQueens = (props) => {
 
                             <Dropdown.Item href="/dragball/season/11">Season 9</Dropdown.Item>
 
+                            <Dropdown.Divider />
                             <Dropdown.Item href="/dragball/season/12">⭐️ All Stars 3 ⭐️</Dropdown.Item>
+                            <Dropdown.Divider />
 
                             <Dropdown.Item href="/dragball/season/13">Season 10</Dropdown.Item>
 
+                            <Dropdown.Divider />
                             <Dropdown.Item href="/dragball/season/14">⭐️ All Stars 4 ⭐️</Dropdown.Item>
+                            <Dropdown.Divider />
 
                             <Dropdown.Item href="/dragball/season/15">Season 11</Dropdown.Item>
 
                             <Dropdown.Item href="/dragball/season/16">Season 12</Dropdown.Item>
 
+                            <Dropdown.Divider />
                             <Dropdown.Item href="/dragball/season/17">⭐️ All Stars 5 ⭐️</Dropdown.Item>
+                            <Dropdown.Divider />
 
                             <Dropdown.Divider />
                             <Dropdown.Item href="/dragball/winners">🏆 Winners 🏆</Dropdown.Item>
