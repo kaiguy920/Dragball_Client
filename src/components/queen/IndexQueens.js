@@ -84,7 +84,7 @@ const IndexQueens = (props) => {
 
                             :
 
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/gxiNbLG.jpg" }}></img></p>
+                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/ZDHjgKW.png" }}></img></p>
                     }
 
                     <Card.Text className="card-text">
@@ -177,9 +177,9 @@ const IndexQueens = (props) => {
                             <Dropdown.Divider />
 
                             <Dropdown.Divider />
-                            <Dropdown.Item href="/dragball/winners">🏆 Winners 🏆</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/winners"> <b>Winners</b></Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item href="/dragball/congeniality">🎀 Miss Congenealities 🎀</Dropdown.Item>
+                            <Dropdown.Item href="/dragball/congeniality"><b>Miss Congenialities</b></Dropdown.Item>
                         </DropdownButton>
                     ),
                 )}

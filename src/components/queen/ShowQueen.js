@@ -118,7 +118,7 @@ const ShowQueen = (props) => {
                 <Card>
                     <Card.Header className='card-title'><h2>{queen.name}</h2></Card.Header>
                     <Card.Body className="d-flex justify-content-start">
-                        <img className="show-image" src={queen.image_url} style={{ width: '40%', height: '5%' }} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/gxiNbLG.jpg" }}></img>
+                        <img className="show-image" src={queen.image_url} style={{ width: '40%', height: '5%' }} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/ZDHjgKW.png" }}></img>
                         <Card.Text className="show-description">
                             <h5>Season: {queen.episodes[0].seasonId}</h5>
 

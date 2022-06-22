@@ -76,7 +76,7 @@ const IndexSeasonQueens = (props) => {
                 <Card.Body className="card-body d-flex flex-column justify-content-end">
 
                     {
-                        queen.winner || queen.seasons[0].place === '1' ?
+                        queen.winner || queen.seasons[0].place === 1 ?
 
                             <>
                                 <p><img style={{ width: '80%', height: '100%', border: '5px solid gold' }} src={queen?.image_url}></img></p>
@@ -84,7 +84,7 @@ const IndexSeasonQueens = (props) => {
 
                             :
 
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/gxiNbLG.jpg" }}></img></p>
+                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/ZDHjgKW.png" }}></img></p>
                     }
 
                     <Card.Text className="card-text">

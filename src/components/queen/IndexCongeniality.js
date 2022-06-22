@@ -83,7 +83,7 @@ const IndexCongenialityQueens = (props) => {
 
                             :
 
-                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/gxiNbLG.jpg" }}></img></p>
+                            <p><img style={{ width: '80%', height: '100%' }} src={queen?.image_url} onError={(e) => { e.target.onerror = null; e.target.src = "https://i.imgur.com/ZDHjgKW.png" }}></img></p>
                     }
 
                     <Card.Text className="card-text">
