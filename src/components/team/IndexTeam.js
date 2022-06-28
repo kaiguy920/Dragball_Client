@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { getAllTeamMembers, removeTeamMember } from '../../api/team'
+import { getAllTeamMembers, removeTeamMember, addTeamName } from '../../api/team'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import TeamNameForm from './TeamNameForm'
 
 
 const cardContainerLayout = {
@@ -12,6 +13,7 @@ const cardContainerLayout = {
 
 const IndexTeam = (props) => {
     const [teamMembers, setTeamMembers] = useState(null)
+    const [teamName, setTeamName] = useState({ teamName: '' })
     const { msgAlert, user } = props
     const [updated, setUpdated] = useState(false)
     const { id } = useParams()
@@ -78,6 +80,33 @@ const IndexTeam = (props) => {
         ))
     }
 
+    const handleChange = (e) => {
+        e.persist()
+        setTeamName((prevTeamName) => {
+            const name = e.target.name
+            const value = e.target.value
+            const updatedValue = { [name]: value }
+
+
+            console.log('prevTeamName', prevTeamName)
+            console.log('updatedValue', updatedValue)
+
+            const editedTeamName = Object.assign({}, prevTeamName, updatedValue)
+
+            return editedTeamName
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addTeamName(teamName)
+            .then(() => setUpdated(true))
+            .catch(() => {
+            })
+
+    }
+
+
     return (
         <>
             <h2>My Team</h2>
@@ -95,7 +124,7 @@ const IndexTeam = (props) => {
                             team={team}
                             handleSubmit={handleSubmit}
                             handleChange={handleChange}
-                            cancelPath={`/dragball/myteam//${userId}`}
+                            cancelPath={`/dragball/myteam/${id}`}
                         />
 
                     </>
