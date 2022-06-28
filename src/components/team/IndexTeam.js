@@ -81,12 +81,25 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-            <TeamNameForm
-                team={team}
-                handleSubmit={handleSubmit}
-                handleChange={handleChange}
-                cancelPath={`/dragball/myteam//${userId}`}
-            />
+            {
+                teamName
+                    ?
+                    <>
+                        <h3>{{ teamName }}</h3>
+                    </>
+
+                    :
+
+                    <>
+                        <TeamNameForm
+                            team={team}
+                            handleSubmit={handleSubmit}
+                            handleChange={handleChange}
+                            cancelPath={`/dragball/myteam//${userId}`}
+                        />
+
+                    </>
+            }
             <div style={cardContainerLayout}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
