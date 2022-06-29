@@ -80,55 +80,12 @@ const IndexTeam = (props) => {
         ))
     }
 
-    const handleChange = (e) => {
-        e.persist()
-        setTeamName((prevTeamName) => {
-            const name = e.target.name
-            const value = e.target.value
-            const updatedValue = { [name]: value }
-
-
-            console.log('prevTeamName', prevTeamName)
-            console.log('updatedValue', updatedValue)
-
-            const editedTeamName = Object.assign({}, prevTeamName, updatedValue)
-
-            return editedTeamName
-        })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        addTeamName(teamName)
-            .then(() => setUpdated(true))
-            .catch(() => {
-            })
-
-    }
-
 
     return (
         <>
             <h2>My Team</h2>
-            {
-                teamName
-                    ?
-                    <>
-                        <h3>{{ teamName }}</h3>
-                    </>
+            < TeamName />
 
-                    :
-
-                    <>
-                        <TeamNameForm
-                            team={team}
-                            handleSubmit={handleSubmit}
-                            handleChange={handleChange}
-                            cancelPath={`/dragball/myteam/${id}`}
-                        />
-
-                    </>
-            }
             <div style={cardContainerLayout}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}
