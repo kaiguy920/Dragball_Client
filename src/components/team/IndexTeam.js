@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getAllTeamMembers, removeTeamMember, addTeamName } from '../../api/team'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-
+import TeamNameModal from './TeamNameModal'
 
 
 
@@ -15,6 +15,7 @@ const cardContainerLayout = {
 const IndexTeam = (props) => {
     const [teamMembers, setTeamMembers] = useState(null)
     const [teamName, setTeamName] = useState({ teamName: '' })
+    const [teamNameModalOpen, setTeamNameModalOpen] = useState(false)
     const { msgAlert, user } = props
     const [updated, setUpdated] = useState(false)
     const { id } = useParams()
@@ -85,7 +86,23 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
+            {
+                teamName ?
+                    <h3>{teamName}</h3>
+                    :
 
+                    <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
+                        Set Team Name
+                    </Button>
+            }
+            <TeamNameModal
+                teamName={teamName}
+                show={teamNameModalOpen}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setTeamNameModalOpen(false)}
+            />
             <div style={cardContainerLayout}>
                 {queenCards}
                 {/* <a href="#top"><Button variant='dark'>Back to Top of Page</Button></a> */}

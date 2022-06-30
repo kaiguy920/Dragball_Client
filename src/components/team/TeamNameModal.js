@@ -4,8 +4,9 @@ import { Modal, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
-const TeamName = () => {
+const TeamNameModal = (props) => {
     const [teamName, setTeamName] = useState({ name: '' })
+    const { user, team, show, handleClose, msgAlert, triggerRefresh } = props
     const handleChange = (e) => {
         e.persist()
         setTeamName((prevTeamName) => {
@@ -25,10 +26,23 @@ const TeamName = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        createTeamName(teamName)
-            .then(() => setUpdated(true))
-            .catch(() => {
-            })
+        createTeamName(teamName, user)
+            .then(() => handleClose())
+            // then we send a success message
+            .then(() =>
+                msgAlert({
+                    heading: 'Team Name',
+                    message: 'You have the nerve',
+                    variant: 'success',
+                }))
+            .then(() => triggerRefresh())
+            // if there is an error, we'll send an error message
+            .catch(() =>
+                msgAlert({
+                    heading: 'Oh No!',
+                    message: 'that aint it',
+                    variant: 'danger',
+                }))
 
     }
 
@@ -36,7 +50,7 @@ const TeamName = () => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
-                <ToyForm
+                <TeamNameForm
                     teamName={teamName}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
@@ -47,4 +61,4 @@ const TeamName = () => {
     )
 }
 
-export default TeamName
+export default TeamNameModal
