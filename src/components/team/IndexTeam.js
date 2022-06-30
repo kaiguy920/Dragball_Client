@@ -3,6 +3,7 @@ import { getAllTeamMembers, removeTeamMember, addTeamName } from '../../api/team
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import TeamNameForm from './TeamNameForm'
+import TeamName from './TeamName'
 
 
 const cardContainerLayout = {
