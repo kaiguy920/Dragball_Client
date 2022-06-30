@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { createTeamName, updateteamName } from '../../api/teamName'
-import { Card, Button } from 'react-bootstrap'
+import { Modal, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import TeamNameForm from './TeamNameForm'
+
 
 const TeamName = () => {
     const [teamName, setTeamName] = useState({ name: '' })
     const handleChange = (e) => {
         e.persist()
-        createTeamName((prevTeamName) => {
+        setTeamName((prevTeamName) => {
             const name = e.target.name
             const value = e.target.value
             const updatedValue = { [name]: value }
@@ -25,7 +25,7 @@ const TeamName = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addTeamName(teamName)
+        createTeamName(teamName)
             .then(() => setUpdated(true))
             .catch(() => {
             })
@@ -33,14 +33,17 @@ const TeamName = () => {
     }
 
     return (
-
-        <TeamNameForm
-            teamName={teamName}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            cancelPath={`/dragball/myteam/${userId}`}
-        />
-
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+                <ToyForm
+                    teamName={teamName}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    heading="Add a team name"
+                />
+            </Modal.Body>
+        </Modal>
     )
 }
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { getAllTeamMembers, removeTeamMember, addTeamName } from '../../api/team'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import TeamNameForm from './TeamNameForm'
-import TeamName from './TeamName'
+
+
 
 
 const cardContainerLayout = {
@@ -85,7 +85,6 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-            < TeamName />
 
             <div style={cardContainerLayout}>
                 {queenCards}
