@@ -4,28 +4,23 @@ import { Link } from 'react-router-dom'
 
 const TeamNameForm = (props) => {
 
-    const { teamName, handleChange, handleSubmit, cancelPath } = props
+    const { teamName, handleChange, handleSubmit, heading } = props
 
     return (
         <Container className="justify-content-center">
-            <h2>Team Name</h2>
+            <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Get cute with it</Form.Label>
                 <Form.Control
                     placeholder="ex: slaytina"
                     value={teamName.name}
-                    name='type'
+                    name='name'
                     onChange={handleChange}
                 />
-                <div class='links'>
 
-                    <Button type='submit'>Submit</Button>
 
-                    <Link to={cancelPath}>
-                        <Button variant="danger">Cancel</Button>
-                    </Link>
+                <Button type='submit'>Submit</Button>
 
-                </div>
 
             </Form>
         </Container >

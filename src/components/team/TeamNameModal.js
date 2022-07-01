@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { createTeamName, updateteamName } from '../../api/teamName'
-import { Modal, Button } from 'react-bootstrap'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { createTeamName } from '../../api/teamName'
+import { Modal } from 'react-bootstrap'
+
 import TeamNameForm from './TeamNameForm'
 
 
@@ -29,21 +29,10 @@ const TeamNameModal = (props) => {
         e.preventDefault()
         createTeamName(teamName, user)
             .then(() => handleClose())
-            // then we send a success message
-            .then(() =>
-                msgAlert({
-                    heading: 'Team Name',
-                    message: 'You have the nerve',
-                    variant: 'success',
-                }))
+
             .then(() => triggerRefresh())
-            // if there is an error, we'll send an error message
-            .catch(() =>
-                msgAlert({
-                    heading: 'Oh No!',
-                    message: 'that aint it',
-                    variant: 'danger',
-                }))
+            .catch(() => {
+            })
 
     }
 
