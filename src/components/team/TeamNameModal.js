@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { createTeamName, updateteamName } from '../../api/teamName'
 import { Modal, Button } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import TeamNameForm from './TeamNameForm'
 
 
 const TeamNameModal = (props) => {

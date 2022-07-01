@@ -86,7 +86,7 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-            {
+            {/* {
                 teamName ?
                     <h3>{teamName}</h3>
                     :
@@ -94,7 +94,10 @@ const IndexTeam = (props) => {
                     <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
                         Set Team Name
                     </Button>
-            }
+            } */}
+            <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
+                Set Team Name
+            </Button>
             <TeamNameModal
                 teamName={teamName}
                 show={teamNameModalOpen}
