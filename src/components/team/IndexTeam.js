@@ -59,17 +59,17 @@ const IndexTeam = (props) => {
         return <p>Where my girls at; where they at?</p>
     }
 
-    function ShowTeamName() {
-        if (user && teamName) {
-            return <h2>{teamName?.name}</h2>
-        }
-        else {
-            return (<Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
-                Set Team Name
-            </Button>)
+    // function ShowTeamName() {
+    //     if (user && teamName) {
+    //         return (<h2>{teamName?.name}</h2>)
+    //     }
+    //     else {
+    //         return (<Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
+    //             Set Team Name
+    //         </Button>)
 
-        }
-    }
+    //     }
+    // }
 
     let queenCards
     const team = teamMembers[0].teamMembers
@@ -99,19 +99,19 @@ const IndexTeam = (props) => {
         <>
             <h2>My Team</h2>
 
-            {/* {
-                teamName ?
-                    <h3>{teamName}</h3>
+            {
+                teamName.name ?
+                    <h3>{teamName.name}</h3>
                     :
 
                     <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
                         Set Team Name
                     </Button>
-            } */}
+            }
             {/* <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
                 Set Team Name
-            </Button> */}
-            <ShowTeamName />
+            </Button>
+            {/* <ShowTeamName /> */}
             <TeamNameModal
                 teamName={teamName}
                 show={teamNameModalOpen}
