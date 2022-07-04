@@ -98,10 +98,10 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-
+            {console.log("Team Name", teamName)}
             {
-                teamName.name ?
-                    <h3>{teamName.name}</h3>
+                teamName.teamName ?
+                    <h3>{teamName.teamName}</h3>
                     :
 
                     <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
