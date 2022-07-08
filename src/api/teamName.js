@@ -2,10 +2,10 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // POST -> create function
-export const createTeamName = (user, newTeamName) => {
+export const createTeamName = (user, teamId, newTeamName) => {
     console.log('this is newTeamName', newTeamName)
     return axios({
-        url: `${apiUrl}/dragball/teamname`,
+        url: `${apiUrl}/dragball/teamname/${teamId}`,
         method: 'POST',
         headers: {
             Authorization: `Token token=${user.token}`

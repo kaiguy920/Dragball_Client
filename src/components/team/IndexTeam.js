@@ -98,20 +98,17 @@ const IndexTeam = (props) => {
     return (
         <>
             <h2>My Team</h2>
-            {console.log("Team Name", teamName)}
+            {console.log("Team Name", teamMembers[0].name.name)}
             {
-                teamName.teamName ?
-                    <h3>{teamName.teamName}</h3>
+                teamMembers[0].name ?
+                    <h3>{teamMembers[0].name.name}</h3>
                     :
 
                     <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
                         Set Team Name
                     </Button>
             }
-            {/* <Button onClick={() => setTeamNameModalOpen(true)} className="m-2" variant="info">
-                Set Team Name
-            </Button>
-            {/* <ShowTeamName /> */}
+
             <TeamNameModal
                 teamName={teamName}
                 show={teamNameModalOpen}
