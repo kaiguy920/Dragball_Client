@@ -27,7 +27,7 @@ const TeamNameModal = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        createTeamName(teamName, user)
+        createTeamName(user, teamName)
             .then(() => handleClose())
 
             .then(() => triggerRefresh())
